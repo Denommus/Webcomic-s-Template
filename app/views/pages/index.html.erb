@@ -1,25 +1,22 @@
-<h1>Listing pages</h1>
-
-<table>
-  <tr>
-    <th>Image</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<div id="magazine">
 <% @pages.each do |page| %>
-  <tr>
-    <td><%= page.image %></td>
-    <td><%= page.description %></td>
-    <td><%= link_to 'Show', page %></td>
-    <td><%= link_to 'Edit', edit_page_path(page) %></td>
-    <td><%= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <div style="background-image:url('<%= page.image.url %>');"></div>
 <% end %>
-</table>
+</div>
+<script type="text/javascript">
+	
+	$('#magazine').bind('turned', function(e, page) {
 
+		console.log('Current view: ', $('#magazine').turn('view'));
+
+	})
+
+	$('#magazine').turn({acceleration: true, shadows: true});
+
+
+</script>
 <br />
 
 <%= link_to 'New Page', new_page_path %>
+
+
